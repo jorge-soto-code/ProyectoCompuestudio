@@ -14,10 +14,13 @@ const PORT = 3001;
 // IMPORTAMOS "mongoose" PARA MANEJAR LA CONEXIÓN CON MONGODB
 const mongoose = require('mongoose');
 
-//CONEXION A LA BASE DE DATOS
-const dbconnect = mongoose.connect('mongodb://jorgesoto:1193262929@localhost:27017/BD_Tareas?authSource=admin')
-    .then(()=> console.log("Base de datos conectada"))
-    .catch(e => console.log(e))
+// CONEXIÓN A LA BASE DE DATOS
+mongoose.connect('mongodb://localhost:27017/BD_Tareas', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("Conectado a BD_Tareas"))
+.catch(err => console.error("Error de conexión:", err));
 
 
 // CONFIGURACIÓN DEL MOTOR DE PLANTILLAS EJS
